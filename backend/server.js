@@ -10,10 +10,10 @@ app.use(express.json());
 
 // Data sementara di memori
 let produk = [
-  { id: 1, nama: "Sandal Crocs warna hitam", harga: 2000000 },
-  { id: 2, nama: "Sneakers laki-laki warna hitam", harga: 245000 },
-  { id: 3, nama: "Sepatu anak putih hijau", harga: 2000 },
-  { id: 4, nama: "Sepatu but warna hitam", harga: 24000000 },
+  { id: 1, nama: "Kaos Tayo Premium", harga: 89000 },
+  { id: 2, nama: "Kaos Xodiac ori", harga: 145000 },
+  { id: 3, nama: "Sepatu mcdonald bts original", harga: 800000 },
+  { id: 4, nama: "Rambut kuntilanak asli", harga: 1200000 },
 ];
 
 // Variabel penghitung id agar produk baru selalu punya id unik
@@ -21,7 +21,7 @@ let idBerikutnya = 5;
 
 // Route paling dasar, hanya untuk mengecek server hidup
 app.get("/", (req, res) => {
-  res.send("Selamat datang di API TokoRaffi!");
+  res.send("Selamat datang di API TokoKita!");
 });
 
 // Route untuk mengecek status ping server
