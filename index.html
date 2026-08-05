@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="TokoRaffi - belanja online mudah dan percaya" />
+    <title> TokoRaffi - Belanja Online Mudah </title>
+    <!-- Memuat Tailwind CSS langsung dari CDN, tanpa perlu instalasi-->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body classs="bg-gray-50">
+
+    <!-- NAVBAR-->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <!-- Navigasi diisi di langkah 3 -->
+        <div class="max-w-7x1 mx-auto px-4 py-4 flex items-center justify-between relative">
+            <1--logo toko -->
+                <h1 class="'text-x11 font-bold text blue-700">TokoRaffi</h1>
+
+                <!--Menu Navigasi: tersembunyi di mobhile, muncul di tablet ke atas -->
+                <nav class="hidden md:flex gap-6 text-gray-600">
+                    <a href="#hero" class="hover:text-blue-700">Beranda</a>
+                    <a href="#catalog" class="hover:text-blue-700">Katalog</a>
+                    <a href="#about" class="hover:text-blue-700">Tentang Kami</a>
+                </nav>
+
+                <div class="flex item-center gap-3">
+                    <!--tombol keranjang-->
+                    <button id="tombol-keranjang" class="bg-blue-700 text-white px-4 py-2 rounded-ig text-sm">
+                        keranjang (0)
+                    </button>
+                    <div id="menu-mobile" class="hidden absolute left-0 top-full mt-2 w-full bg-white shadow-ig rounded b-x1 p-4 md=hidden z-20">
+                    <ul class="flex flex-col gap-2">
+                        <li><a href="#hero" class="hover:text-blue-700">Beranda</a></li>
+                        <li><a href="#catalog" class="hover:text-blue-700">Katalog</a></li>
+                        <li><a href="#about" class="hover:text-blue-700">Tentang Kami</a></li>
+                    </ul>
+                </div>
+
+                    <!--ikon hamburger, hanya tampil di mobile -->git init
+                    <button id="tombol-hamburger" class="md:hidden text-gray-700 text-2x1">&#9776;</button>
+                </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="bg-gradient-to-r from-blue-700 to-blue-500 text-white">
+                <div class="max-w-7-1 mx-auto px-4 py-16 text-center">
+                    <h2 class="text-3x1 md:text-5x1 font-bold mb-4">
+                        Belanja Mudah, Harga Bersahabat
+                    </h2>
+                    <p class="text-blue-100 mb-6">
+                        Temukan berbagai produk pilihan hanya di TokoRaffi
+                    </p>
+                    <a href="#catalog"
+                        class="bg-white text-blue-700 font-semibold px-6 py-3 rounded-ig hover:bg-blue-50 transition">
+                        lihat katalog
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section id="catalog"><!--diisi di langkah 5 -->
+            <div id= "grid-katalog"class="max-w-7x1 mx-auto px-4 py-12">
+                <h3 class="text-2x1 font-bold text-gray-800 mb-8">Produk Pilihan</h3>
+                <!--grid-cols-2 di HP, md:grid-cols-3 di tablet, lg:grid-cols-4 di desktop -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                    <!-- Kartu Produk dengan Badge Diskon -->
+                    <div class="relative bg-white rounded-x1 shadow hover: shadow-lg transition p-4">
+                        <span class="absolute top-2 left-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded">DISKON
+                            20%</span>
+                        <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98s-lr9rtguhf8bd71"
+                            alt="Sandal Crocs warna hitam" class="w-full h-40 object-cover rounded-1g mb-3" />
+                        <h4 class="font-semibold text-gray-800">Sandal Crocs warna hitam</h4>
+                        <p class="text-blue-700 font-bold mt-1">Rp 2.000.000</p>
+                        <button
+                            class="w-full mt-3 bg-blue-700 text-white py-2 rounded-lg text-sm hover:bg-blue-800 transition">
+                            Tambah ke Keranjang
+                        </button>
+                    </div>
+
+                    <!-- Kartu Produk tanpa Badge (versi standar) -->
+                    <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4">
+                        <img src="https://th.bing.com/th/id/OIP.4PWVtakAh0XnLk2xl-F7wQHaHa?w=185&h=184&c=7&r=0&o=7&pid=1.7&rm=3"
+                            alt="Sneakers laki-laki warna hitam" class="w-full h-40 object-cover rounded-1g mb-3" />
+                        <h4 class="font-semibold text-gray-800">Sneakers laki-laki warna hitam</h4>
+                        <p class="text-blue-700 font-bold mt-1">Rp 245.000</p>
+                        <button
+                            class="w-full mt-3 bg-blue-700 text-white py-2 rounded-lg text-sm hover:bg-blue-800 transition">
+                            Tambah ke Keranjang
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4">
+                        <img src="https://th.bing.com/th/id/OIP.tXjl9CLj8wrYq3bMP-tUbwHaHa?w=185&h=185&c=7&r=0&o=7&pid=1.7&rm=3"
+                            alt="Sepatu anak putih hijau" class="w-full h-40 object-cover rounded-1g mb-3" />
+                        <h4 class="font-semibold text-gray-800">Sepatu anak putih hijau</h4>
+                        <p class="text-blue-700 font-bold mt-1">Rp 2.000</p>
+                        <button
+                            class="w-full mt-3 bg-blue-700 text-white py-2 rounded-lg text-sm hover:bg-blue-800 transition">
+                            Tambah ke Keranjang
+                        </button>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-4">
+                        <img src="https://th.bing.com/th/id/OIP.6_4FXFN5Bs67jftkMA8OpQHaHa?w=194&h=194&c=7&r=0&o=7&pid=1.7&rm=3"
+                            alt="Sepatu but warna hitam" class="w-full h-40 object-cover rounded-1g mb-3" />
+                        <h4 class="font-semibold text-gray-800">Sepatu but warna hitam</h4>
+                        <p class="text-blue-700 font-bold mt-1">Rp 24.000.000</p>
+                        <button
+                            class="w-full mt-3 bg-blue-700 text-white py-2 rounded-lg text-sm hover:bg-blue-800 transition">
+                            Tambah ke Keranjang
+                        </button>
+                    </div>
+                    <!-- Salin salah satu kartu di atas untuk produk ke-3 s.d. ke-8 -->
+
+                </div>
+            </div>
+        </section>
+        <section id="about"><!--diiisi di sesi 3, langkah 6-->
+            <div class="bg-white py-12">
+
+                <div class="max-w-7x1 mx-auto px-4">
+
+                    <h3 class="text-2x1 font-bold text-gray-200 nb-5 text-center">
+                        Apa Kata Pelanggan Kami?
+                    </h3>
+                    <!-- flex-col di mobile, flex-row di tablet ke atas-->
+                    <div class="flex flex-col md:flex-rowм дар-6">
+                        <div class="flex-1 bg-gray-50 rounded-x1 p-6">
+                            <p class="text-gray-600 italic">
+                                "Jika ada yang menghina-hina ini toko, SAYA AKAN LAWAN"
+                            </p>
+                            <p class="mt-4 font-semibold text-gray-800">- Mulkowi, Solo</p>
+                        </div>
+                        <div class="flex-1 bg-gray-50 rounded-x1 p-6">
+                            <p class="text-gray-600 italic">
+                                "Barangnya jelek bet jir, terus harganya jauh diatas umr Indonesia."
+                            </p>
+                            <p class="mt-4 font-semibold text-gray-800">- Rafi, Surabaya</p>
+                        </div>
+                        <div class="flex-1 bg-gray-50 rounded-x1 p-6">
+                            <p class="text-gray-600 italic">
+                                "Tokonya jelek karena pemiliknya penghina nomor 1 pak Prabowo"
+                            </p>
+                            <p class="mt-4 font-semibold text-gray-800">- Limak nayirp Lafuan Nidda, Surabaya</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form id="form-produk" class="bg-white rounded-x1 shadow p-6 mt-8 max-w-nd mx-auto">
+                <h4 class="font-semibold text-gray-800 mb-4"> Tambah Produk Baru </h4>
+            
+            <label class=" block text-sm text-gray-600 mb-1"> Nama Produk </label>
+                    <input type="text" id="input-nama" required class="w-full border rounded-lg px-3 py-2 mb-3" />
+            
+            <label class=" block text-sm text-gray-600 mb-1"> Harga (Rp) </label>
+                    <input type="number" id="input-harga" required mnd class="w-full border rounded-1g px-3 py-2 mb-3" />
+            
+             <p id="pesan-error" class="text-red-600 text-sm mb-3 hidden"></p>
+            
+             <button type="submit" class="w-full bg-blue-700 text-white py-2 rounded-ig hover:bg-blue-808"> Tambahkan Produk </button>
+            </form>
+
+        </section>
+    </main>
+
+    <!--footer-->
+    <footer class="bg-gray-900 text -300"><!-- diisi di sesi 3, langkah 7-->
+        <div class="max-w-7x1 mx-auto px-4 py-10">
+            <!-- grid-cols-1 di mobile, grid-cols-3 di tablet ke atas --> 
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+            <div>
+                <h5 class="text-white font-semibold-mb-3">Tokokita</h5>
+                <p>Belanja online mudah, cepat, dan terpercaya sejak 2026.</p>
+            </div>
+            <div>
+                <h5 class="text-white font-semibold mb-3">Tautan Cepat</h5>
+                <ul class="space-y-2">
+                    <li><a href="#catalog" class="hover: text-white">Katalog</a></li>
+                    <li><a href="#about" class="hover: text-white">Tentang Kami</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-semibold mb-3">Hubungi Kami</h5>
+                <p>Email: TokoRaffi@gmail.com</p>
+                <p>WhatsApp: 0812-xxxx-xxxx</p>
+            </div>
+        </div>
+        <hr class="border-gray-700 my-6" />
+        <p class="text-center text-xs">
+            &copy; 2026 TokoRaffi. Dibuat dalam Bootcamp Fullstack Web Development.
+        </p>
+        </div>
+    </footer>
+
+    <script src="Script.js" defer></script>
+
+</body>
+
+</html>
