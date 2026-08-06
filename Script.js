@@ -94,7 +94,7 @@ async function muatProduk() {
     gridKatalog.innerHTML = `<p class="text-gray-400 col span-full">Memuat produk...</p>`;
 
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch("https://supreme-rotary-phone-xr9p6x5x7jpgcv449-3000.app.github.dev/api/products");
         const hasil = await response.json();
 
         gridKatalog.innerHTML = ""; // kosongkan pesan "Memuat Produk..."
@@ -122,7 +122,7 @@ formProduk.addEventListener("submit", async (event) => {
   pesanError.classList.add("hidden");
  
   // Mengirim data produk baru ke backend
-  await fetch(API_URL, {
+  await fetch("https://supreme-rotary-phone-xr9p6x5x7jpgcv449-3000.app.github.dev/api/products", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ nama, harga }),
