@@ -26,22 +26,32 @@ tombolHamburger.addEventListener("click", () => {
 
 const formProduk = document.querySelector("#form-produk");
 // beri id "grid-katalog" pada <div grid> di Catalog UI
-const gridkatalog = document.querySelector("#grid-katalog");
+const gridKatalog = document.querySelector("#grid-katalog");
 const pesanError  = document.querySelector("#pesan-error");
 
-formProduk.addEventListener("submit", (event) => {
+formProduk.addEventListener("submit", async (event) => {
     event.preventDefault(); // mencegah form me-reload halaman
 
     const nama = document.querySelector("#input-nama").value.trim();
-    const harga = document.querySelector("#input-harga").value;
+    const harga = Number (document.querySelector("#input-harga").value);
 
     // Validasi sederhana
-    if (nama === "" || harga === "" || Number(harga) <= 0) {
+    if (nama === "" || harga   <= 0) {
         pesanError.textContent = "Nama produk dan harga (lebih dari 0) wajib diisi.";
         pesanError.classList.remove("hidden");
         return; // hentikan proses jika tidak valid
     }
     pesanError.classList.add("hidden");
+
+    await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({nama, harga})
+    });
+
+    formProduk.reset();
+    muatProduk(); // memuat ulang data terbaru dari database
+});
 
     // Membuat elemen kartu produk baru secara dinamis
     const kartuBaru = document.createElement("div");
@@ -53,16 +63,71 @@ formProduk.addEventListener("submit", (event) => {
      <button class="w-full bg-blue-700 text-white py-2 rounded-lg text-sm btn-tambah-keranjang"> Tambah ke keranjang </button>
      `;
 
-    gridkatalog.appendChild(kartuBaru);
+    gridKatalog.appendChild(kartuBaru);
     formProduk.reset() //mengosongkan form setelah berhasil
-});
 
 let totalKeranjang = 0;
 const labelKeranjang = document.querySelector("#tombol-keranjang");
 
-gridkatalog.addEventListener("click", (event) => {
+gridKatalog.addEventListener("click", (event) => {
     if (event.target.classList.contains("btn-tambah-keranjang")) {
         totalKeranjang++;
         labelKeranjang.textContent = `Keranjang (${totalKeranjang})`;
     }
+});
+
+const API_URL = "http://localhost:3000/api/products";
+
+function buatKartuProduk(item) {
+    const kartu = document.createElement("div");
+    kartu.className = "bg-white rounded-lg shadow hover:shadow-lg transition p-4";
+    kartu.innerHTML = `
+        <div class="w-full h-48 bg-gray-100 rounded-lg mb-3 flex items-center justify-center text-gray-400 text-sm"> Belum ada gambar </div>
+        <h4 class="font-semibold text-gray-800">${item.nama}</h4>
+        <p class="text-blue-700 font-bold mt-1">Rp ${Number(item.harga).toLocaleString("id-ID")}</p>
+        <button class="w-full bg-blue-700 text-white py-2 rounded-lg text-sm btn-tambah-keranjang"> Tambah ke keranjang </button>
+    `;
+    return kartu;
+}
+
+async function muatProduk() {
+    gridKatalog.innerHTML = `<p class="text-gray-400 col span-full">Memuat produk...</p>`;
+
+    try {
+        const response = await fetch(API_URL);
+        const hasil = await response.json();
+
+        gridKatalog.innerHTML = ""; // kosongkan pesan "Memuat Produk..."
+        hasil.data.forEach(item => {
+            gridKatalog.appendChild(buatKartuProduk(item));
+        });
+    } catch (error) {
+        gridKatalog.innerHTML = `<p class="text-red-500 col-span-full"> Gagal memuat produk. Pastikan server backend sedang berjalan. </p>`;
+    }
+}
+
+muatproduk();
+
+formProduk.addEventListener("submit", async (event) => {
+  event.preventDefault();
+ 
+  const nama = document.querySelector("#input-nama").value.trim();
+  const harga = Number(document.querySelector("#input-harga").value);
+ 
+  if (nama === "" || harga <= 0) {
+    pesanError.textContent = "Nama produk dan harga (lebih dari 0) wajib diisi.";
+    pesanError.classList.remove("hidden");
+    return;
+  }
+  pesanError.classList.add("hidden");
+ 
+  // Mengirim data produk baru ke backend
+  await fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ nama, harga }),
+  });
+ 
+  formProduk.reset();
+  muatProduk(); // memuat ulang data terbaru dari database
 });

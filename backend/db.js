@@ -1,7 +1,7 @@
 const Database = require("better-sqlite3");
  
 // Membuat/membuka file database bernama tokokita.db
-const db = new Database("tokokita.db");
+const db = new Database("tokoRaffi.db");
  
 // Membuat tabel 'produk' jika belum ada (dijalankan sekali saat server start)
 db.exec(`
