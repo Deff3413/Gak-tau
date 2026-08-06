@@ -43,7 +43,7 @@ formProduk.addEventListener("submit", async (event) => {
     }
     pesanError.classList.add("hidden");
 
-    await fetch(API_URL, {
+    await fetch("https://supreme-rotary-phone-xr9p6x5x7jpgcv449-3000.app.github.dev/api/products", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({nama, harga})
@@ -76,7 +76,7 @@ gridKatalog.addEventListener("click", (event) => {
     }
 });
 
-const API_URL = "http://localhost:3000/api/products";
+const API_URL = "https://supreme-rotary-phone-xr9p6x5x7jpgcv449-3000.app.github.dev/api/products";
 
 function buatKartuProduk(item) {
     const kartu = document.createElement("div");
