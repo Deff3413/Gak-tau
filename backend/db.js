@@ -1,7 +1,7 @@
 const Database = require("better-sqlite3");
  
 // Membuat/membuka file database bernama tokokita.db
-const db = new Database("tokoRaffi.db");
+const db = new Database("tokoRoti_Mas_Rusdi.db");
  
 // Membuat tabel 'produk' jika belum ada (dijalankan sekali saat server start)
 db.exec(`
@@ -22,10 +22,10 @@ if (jumlahProduk.total === 0) {
   );
  
   // Data awal, mirip dengan yang dipakai di Hari 3
-  tambahProduk.run("Sandal Crocs warna hitam", 2000000);
-  tambahProduk.run("Sneakers laki-laki warna hitam", 245000);
-  tambahProduk.run("Sepatu anak-anak putih hijau", 2000);
-  tambahProduk.run("Sepatu but warna hitam", 22000000);
+  tambahProduk.run("Roti Croissant", 20000);
+  tambahProduk.run("Roti Baguette", 24500);
+  tambahProduk.run("Roti Bretzel", 25000);
+  tambahProduk.run("Roti Sourdough", 25000);
  
   console.log("Data awal produk berhasil dimasukkan ke database.");
 }

@@ -6,6 +6,7 @@ const db = require("./db");
 const app = express();
 const PORT = 3000;
 
+app.use (cors());
 // Middleware bawaan agar Express bisa membaca JSON dari request
 app.use(express.json());
 
